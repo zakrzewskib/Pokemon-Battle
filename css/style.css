@@ -25,7 +25,7 @@ body {
 }
 
 .score {
-  font-size: 3.2rem;
+  font-size: 2.8rem;
   /* color: #292929; */
   color: #c52018;
 
@@ -47,7 +47,7 @@ body {
 .battle-cards {
   position: absolute;
   display: flex;
-  height: 30rem;
+  height: 28rem;
 }
 
 .computer-cards {
@@ -86,7 +86,7 @@ body {
 /* ------------------------------------------- */
 
 .card--player:hover img {
-  transform: scale(1.4) translateY(-50%);
+  transform: scale(var(--scaleFactor)) translateY(-50%);
   cursor: pointer;
 }
 
@@ -125,30 +125,33 @@ body {
 }
 
 .card--player:nth-child(1):hover img {
-  transform: scale(1.4) translateY(var(--translateYCardOnHover)) rotate(calc(-1 * var(--rotation-card-1)));
+  transform: scale(var(--scaleFactor)) translateY(var(--translateYCardOnHover))
+    rotate(calc(-1 * var(--rotation-card-1)));
 }
 
 .card--player:nth-child(2):hover img {
-  transform: scale(1.4) translateY(var(--translateYCardOnHover)) rotate(calc(-1 * var(--rotation-card-2)));
+  transform: scale(var(--scaleFactor)) translateY(var(--translateYCardOnHover))
+    rotate(calc(-1 * var(--rotation-card-2)));
 }
 
 .card--player:nth-child(3):hover img {
-  transform: scale(1.4) translateY(var(--translateYCardOnHover)) rotate(calc(-1 * var(--rotation-card-3)));
+  transform: scale(var(--scaleFactor)) translateY(var(--translateYCardOnHover))
+    rotate(calc(-1 * var(--rotation-card-3)));
 }
 
 .card--player:nth-child(4):hover img {
-  transform: scale(1.4) translateY(var(--translateYCardOnHover));
+  transform: scale(var(--scaleFactor)) translateY(var(--translateYCardOnHover));
 }
 
 .card--player:nth-child(5):hover img {
-  transform: scale(1.4) translateY(-60%) rotate(calc(-1 * var(--rotation-card-5)));
+  transform: scale(var(--scaleFactor)) translateY(-60%) rotate(calc(-1 * var(--rotation-card-5)));
 }
 
 /* ------------------------------------------- */
 /* COMPUTER'S CARDS */
 /* ------------------------------------------- */
 .card--computer:hover img {
-  transform: scale(1.4) translateY(-50%);
+  transform: scale(var(--scaleFactor)) translateY(-50%);
   cursor: pointer;
 }
 
@@ -188,21 +191,25 @@ body {
 }
 
 .card--computer:nth-child(1):hover img {
-  transform: scale(1.4) translateY(calc(-1 * var(--translateYCardOnHover))) rotate(var(--rotation-card-1));
+  transform: scale(var(--scaleFactor)) translateY(calc(-1 * var(--translateYCardOnHover)))
+    rotate(var(--rotation-card-1));
 }
 
 .card--computer:nth-child(2):hover img {
-  transform: scale(1.4) translateY(calc(-1 * var(--translateYCardOnHover))) rotate(var(--rotation-card-2));
+  transform: scale(var(--scaleFactor)) translateY(calc(-1 * var(--translateYCardOnHover)))
+    rotate(var(--rotation-card-2));
 }
 
 .card--computer:nth-child(3):hover img {
-  transform: scale(1.4) translateY(calc(-1 * var(--translateYCardOnHover))) rotate(var(--rotation-card-3));
+  transform: scale(var(--scaleFactor)) translateY(calc(-1 * var(--translateYCardOnHover)))
+    rotate(var(--rotation-card-3));
 }
 
 .card--computer:nth-child(4):hover img {
-  transform: scale(1.4) translateY(calc(-1 * var(--translateYCardOnHover)));
+  transform: scale(var(--scaleFactor)) translateY(calc(-1 * var(--translateYCardOnHover)));
 }
 
 .card--computer:nth-child(5):hover img {
-  transform: scale(1.4) translateY(calc(-1 * var(--translateYCardOnHover))) rotate(var(--rotation-card-5));
+  transform: scale(var(--scaleFactor)) translateY(calc(-1 * var(--translateYCardOnHover)))
+    rotate(var(--rotation-card-5));
 }
