@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  background-color: #fff6a4;
+
+  position: relative;
+
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  height: 24rem;
+}
+
+.computer, .player {
+  display: flex;
+  /* gap: 2rem; */
+}
+
+.computer {
+  position: absolute;
+  top: 1%;
+}
+
+.player {
+  position: absolute;
+  bottom: 4%;
+}
+
+.card {
+  margin-right: -3.2rem;
+  transition: all 0.2s;
+}
+
+.card:hover {
+  /* z-index: 999; */
+  box-shadow: 0 0 10px black;
+  transform: scale(1.1);
+}
+
+/* .card:nth-child(1):hover {
+  transform: rotate(-20deg);
+}
+
+.card:nth-child(2) {
+  transform: rotate(-10deg);
+}
+
+.card:nth-child(3) {
+  transform: rotate(-5deg);
+}
+
+.card:nth-child(4) {
+  transform: rotate(10deg);
+}
+
+.card:nth-child(5) {
+  transform: rotate(20deg);
+} */
+
+.hidden {
+  display: none;
+}
