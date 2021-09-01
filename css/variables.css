@@ -1,0 +1,8 @@
+:root {
+  --rotation-card-1: -20deg;
+  --rotation-card-2: -10deg;
+  --rotation-card-3: -5deg;
+  --rotation-card-4: 0deg;
+  --rotation-card-5: 10deg;
+  --translateYCardOnHover: -60%;
+}
