@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -10,8 +12,8 @@ html {
 }
 
 body {
+  font-family: 'Press Start 2P', sans-serif;
   background-color: #fff6a4;
-  line-height: 1;
 }
 
 .container {
@@ -20,6 +22,24 @@ body {
   height: 100vh;
 
   position: relative;
+}
+
+.score {
+  font-size: 3.2rem;
+  /* color: #292929; */
+  color: #c52018;
+
+  position: absolute;
+}
+
+.score--computer {
+  top: 2%;
+  left: 2%;
+}
+
+.score--player {
+  bottom: 20%;
+  left: 2%;
 }
 
 .computer-cards,
