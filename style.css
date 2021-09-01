@@ -15,40 +15,40 @@ body {
 }
 
 .container {
-  position: relative;
-
-  height: 100vh;
-
   display: flex;
   justify-content: center;
+  height: 100vh;
+
+  position: relative;
 }
 
-.computer,
-.player,
-.battle {
+.computer-cards,
+.player-cards,
+.battle-cards {
   position: absolute;
   display: flex;
   height: 30rem;
 }
 
-.computer {
-  top: -5%;
+.computer-cards {
+  top: -7%;
 }
 
-.player {
-  bottom: -5%;
+.player-cards {
+  bottom: -7%;
 }
 
-.battle {
+.battle-cards {
   top: 50%;
   transform: translateY(-50%);
-
-  gap: 10rem;
+  gap: 5rem;
 }
 
-img {
-  height: 100%;
+.card-img {
   display: block;
+
+  height: 100%;
+
   transition: all 0.3s;
 }
 
@@ -57,64 +57,62 @@ img {
   margin-right: -3.2rem;
 }
 
-.player .card:hover img {
-  /* z-index: 999; */
-  /* box-shadow: 0 0 10px black; */
+.card--player:hover img {
   transform: scale(1.4) translateY(-50%);
   cursor: pointer;
 }
 
-.player .card {
+.card--player {
   position: absolute;
 }
 
-.player .card:nth-child(1) {
+.card--player:nth-child(1) {
   top: 0;
   left: -40rem;
   transform: rotate(-20deg);
 }
 
-.player .card:nth-child(2) {
+.card--player:nth-child(2) {
   top: -3rem;
   left: -25rem;
   transform: rotate(-10deg);
 }
 
-.player .card:nth-child(3) {
+.card--player:nth-child(3) {
   top: -4rem;
   left: -10rem;
   transform: rotate(-5deg);
 }
 
-.player .card:nth-child(4) {
+.card--player:nth-child(4) {
   top: -4rem;
   left: 5rem;
   transform: rotate(0deg);
 }
 
-.player .card:nth-child(5) {
+.card--player:nth-child(5) {
   top: -2rem;
   left: 20rem;
   transform: rotate(10deg);
 }
 
-.player .card:nth-child(1):hover img {
+.card--player:nth-child(1):hover img {
   transform: scale(1.4) translateY(-60%) rotate(20deg);
 }
 
-.player .card:nth-child(2):hover img {
+.card--player:nth-child(2):hover img {
   transform: scale(1.4) translateY(-60%) rotate(10deg);
 }
 
-.player .card:nth-child(3):hover img {
+.card--player:nth-child(3):hover img {
   transform: scale(1.4) translateY(-60%) rotate(5deg);
 }
 
-.player .card:nth-child(4):hover img {
+.card--player:nth-child(4):hover img {
   transform: scale(1.4) translateY(-60%);
 }
 
-.player .card:nth-child(5):hover img {
+.card--player:nth-child(5):hover img {
   transform: scale(1.4) translateY(-60%) rotate(-10deg);
 }
 
