@@ -1,35 +1,41 @@
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
 
+body {
   background-color: #fff6a4;
+  line-height: 1;
+  height: 100vh;
+}
 
+.container {
   position: relative;
 
-  height: 100vh;
+  height: 100%;
 
   display: flex;
   justify-content: center;
 }
 
-img {
-  height: 24rem;
-}
-
-.computer, .player {
+.computer,
+.player {
+  position: absolute;
   display: flex;
   /* gap: 2rem; */
 }
 
 .computer {
-  position: absolute;
   top: 1%;
 }
 
 .player {
-  position: absolute;
   bottom: 4%;
+}
+
+img {
+  height: 24rem;
 }
 
 .card {
@@ -37,15 +43,18 @@ img {
   transition: all 0.2s;
 }
 
-.card:hover {
+.card:hover img {
   /* z-index: 999; */
-  box-shadow: 0 0 10px black;
+  /* box-shadow: 0 0 10px black; */
   transform: scale(1.1);
 }
 
-/* .card:nth-child(1):hover {
+/* .player .card:nth-child(1) {
+  top: 0;
+  left: 0;
   transform: rotate(-20deg);
-}
+} */
+/*
 
 .card:nth-child(2) {
   transform: rotate(-10deg);
