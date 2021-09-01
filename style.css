@@ -36,7 +36,7 @@ body {
 }
 
 .player {
-  bottom: 0;
+  bottom: -5%;
 }
 
 .battle {
@@ -49,7 +49,7 @@ body {
 img {
   height: 100%;
   display: block;
-  transition: all 0.2s;
+  transition: all 0.3s;
 }
 
 .card {
@@ -57,34 +57,45 @@ img {
   margin-right: -3.2rem;
 }
 
-.card:hover img {
+.player .card:hover img {
   /* z-index: 999; */
   /* box-shadow: 0 0 10px black; */
-  transform: scale(1.2);
+  transform: scale(1.2) translateY(-50%);
 }
 
-/* .player .card:nth-child(1) {
-  top: 0;
-  left: 0;
-  transform: rotate(-20deg);
-} */
-/*
+.player .card {
+  position: absolute;
+}
 
-.card:nth-child(2) {
+.player .card:nth-child(1) {
+  top: 0;
+  left: -40rem;
+  transform: rotate(-20deg);
+}
+
+.player .card:nth-child(2) {
+  top: -3rem;
+  left: -25rem;
   transform: rotate(-10deg);
 }
 
-.card:nth-child(3) {
+.player .card:nth-child(3) {
+  top: -4rem;
+  left: -10rem;
   transform: rotate(-5deg);
 }
 
-.card:nth-child(4) {
-  transform: rotate(10deg);
+.player .card:nth-child(4) {
+  top: -4rem;
+  left: 5rem;
+  transform: rotate(0deg);
 }
 
-.card:nth-child(5) {
-  transform: rotate(20deg);
-} */
+.player .card:nth-child(5) {
+  top: -2rem;
+  left: 20rem;
+  transform: rotate(10deg);
+}
 
 .hidden {
   display: none;
