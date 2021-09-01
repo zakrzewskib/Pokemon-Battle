@@ -134,6 +134,7 @@ body {
 
 .card--computer {
   position: absolute;
+  z-index: 1;
 }
 
 .card--computer:nth-child(1) {
