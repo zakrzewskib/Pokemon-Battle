@@ -27,6 +27,7 @@ class Pokemon {
   }
 }
 
+const indexes = [0, 1, 2, 3, 4];
 const pokemons = [];
 
 const defineTypes = function () {
@@ -34,7 +35,7 @@ const defineTypes = function () {
   pokemonTypes[1] = 'Grass';
   pokemonTypes[2] = 'Fire';
   pokemonTypes[3] = 'Psychic';
-  pokemonTypes[4] = 'Water';
+  pokemonTypes[4] = 'Fairy';
 };
 
 const defineImgUrls = function () {
@@ -43,7 +44,7 @@ const defineImgUrls = function () {
   imgUrls[1] = prefix + 'Bulbasaur.png';
   imgUrls[2] = prefix + 'Charmander.png';
   imgUrls[3] = prefix + 'Haunter.png';
-  imgUrls[4] = prefix + 'Magikarp.png';
+  imgUrls[4] = prefix + 'Jigglypuff.png';
 };
 
 const definePokemon = function () {
@@ -53,6 +54,9 @@ const definePokemon = function () {
   for (let i = 0; i < pokemonTypes.length; i++) {
     pokemons.push(new Pokemon(imgUrls[i], pokemonTypes[i]));
   }
+
+  shuffleArray(indexes);
+  shuffleArray(pokemons);
 
   console.log(pokemons);
 };
@@ -88,9 +92,14 @@ let computerPokemon;
 let randomIndex;
 
 const randomizePokemon = function () {
-  randomIndex = randomBetween(0, pokemons.length - 1);
-  computerPokemon = pokemons[randomIndex];
+  // randomIndex = randomBetween(0, pokemons.length - 1);
+  computerPokemon = pokemons[pokemons.length - 1];
+  console.log(pokemons);
+
+  pokemons.pop();
 };
+
+let zIndex = 0;
 
 const moveCard = function (card, player) {
   const left = player ? '0' : '-32rem';
@@ -102,18 +111,21 @@ const moveCard = function (card, player) {
 
   card.style.pointerEvents = 'none';
   card.style.transform = `rotate(0deg)`;
-  card.style.zIndex = 0;
+  card.style.zIndex = zIndex;
+  zIndex++;
 
   setTop(card, player);
 
-  setTimeout(function () {
-    card.classList.add('hidden');
-  }, 1000);
+  // setTimeout(function () {
+  //   card.classList.add('hidden');
+  // }, 1000);
 };
 
 const computerPlaysPokemon = function (src) {
   randomizePokemon();
-  moveCard(computerCardsEls[randomIndex], false);
+  moveCard(computerCardsEls[indexes[indexes.length - 1]], false);
+  indexes.pop();
+  console.log(indexes);
 };
 
 const setBattleCardImage = function (card, src) {
@@ -126,12 +138,14 @@ const removeCard = function (card) {
 };
 
 const playPokemon = function (card) {
-  const imageSrc = card.children[0].src;
+  const src = card.children[0].src;
   const pokemonType = pokemonTypes[card.id];
+  const myPokemon = new Pokemon(src, pokemonType);
 
   moveCard(card, true);
+  computerPlaysPokemon(src);
 
-  computerPlaysPokemon(imageSrc);
+  console.log(myPokemon.type + 'vs' + computerPokemon.type);
 };
 
 const addEventListenersToPlayerCards = function () {
