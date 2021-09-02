@@ -12,15 +12,16 @@ const imgUrls = '';
 const pokemonTypes = [];
 
 const setComputerTop = function (card) {
-  card.style.top = '130%';
+  card.style.top = '128.5%';
 };
 
 const moveComputerCard = function (card) {
   card.style.pointerEvents = 'none';
-  const left = '-32rem';
+  const left = '-22rem';
   card.children[0].src = './img/cards/Pikachu.png';
 
   card.style.transform = `rotate(0deg)`;
+  card.style.zIndex = 0;
 
   card.style.left = left;
   setComputerTop(card);
@@ -43,7 +44,7 @@ const removeCard = function (card) {
 const tops = [];
 const length = 100;
 const firstTop = 0;
-const secondTop = -130;
+const secondTop = -128;
 
 const defineTopsForAnimation = function () {
   const step = (firstTop - secondTop) / (length - 1);
@@ -79,6 +80,7 @@ const moveCard = function (card) {
   const left = '0rem';
 
   card.style.transform = `rotate(0deg)`;
+  card.style.zIndex = 0;
 
   card.style.left = left;
   setTop(card);

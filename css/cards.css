@@ -9,6 +9,7 @@
 
 .card--player {
   position: absolute;
+  z-index: 999;
 }
 
 .card--player:nth-child(1) {
@@ -74,7 +75,7 @@
 
 .card--computer {
   position: absolute;
-  z-index: 1;
+  z-index: 999;
 }
 
 .card--computer:nth-child(1) {
