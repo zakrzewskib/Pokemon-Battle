@@ -6,6 +6,8 @@ const firstBattleCard = document.querySelectorAll('.card--battle')[0];
 const secondBattleCard = document.querySelectorAll('.card--battle')[1];
 const playerPokemonInfo = document.querySelector('.player-pokemon');
 const computerPokemonInfo = document.querySelector('.computer-pokemon');
+const winner = document.querySelector('.winner');
+const result = document.querySelector('.result');
 
 const root = document.documentElement;
 const rootVariables = getComputedStyle(root);
@@ -142,6 +144,30 @@ const removeCard = function (card) {
   card.classList.add('hidden');
 };
 
+const setInfoAboutWinner = function (type1, type2, youWin) {
+  winner.textContent = youWin ? 'You win!' : 'You lose!';
+  result.textContent = `${type2} ${youWin ? 'loses to' : 'beats'} ${type1}`;
+};
+
+const setWinner = function (type1, type2) {
+  // if (type1 == 'Water' && type2 == 'Fire') {
+  //   console.log('Water wins!');
+  //   return true;
+  // } else if (type1 === 'Fire' && type2 === 'Water') {
+  //   console.log('Fire loses!');
+  //   return false;
+  // }
+
+  if (type1 == 'Water') {
+    console.log('Water wins!');
+    return true;
+  } else if (type1 === 'Fire') {
+    console.log('Fire loses!');
+    return false;
+  }
+  return false;
+};
+
 const setInfoAboutBattle = function (myPokemon) {
   playerPokemonInfo.textContent = myPokemon.name;
   computerPokemonInfo.textContent = computerPokemon.name;
@@ -158,7 +184,8 @@ const setInfoAboutBattle = function (myPokemon) {
 
 const fight = function (myPokemon) {
   setInfoAboutBattle(myPokemon);
-  console.log(pokemonNames);
+  const youWin = setWinner(myPokemon.type, computerPokemon.type);
+  setInfoAboutWinner(myPokemon.type, computerPokemon.type, youWin);
 };
 
 const playPokemon = function (card) {
@@ -166,8 +193,6 @@ const playPokemon = function (card) {
   const pokemonType = pokemonTypes[card.id];
   const pokemonName = pokemonNames[card.id];
 
-  console.log(pokemonNames);
-  console.log(card.id);
   const myPokemon = new Pokemon(src, pokemonType, pokemonName);
 
   moveCard(card, true);
