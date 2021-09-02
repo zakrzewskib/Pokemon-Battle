@@ -1,0 +1,132 @@
+/* ------------------------------------------- */
+/* PLAYER'S CARDS */
+/* ------------------------------------------- */
+
+.card--player:hover img {
+  transform: scale(var(--scaleFactor)) translateY(-50%);
+  cursor: pointer;
+}
+
+.card--player {
+  position: absolute;
+}
+
+.card--player:nth-child(1) {
+  top: 0;
+  left: -40rem;
+  transform: rotate(var(--rotation-card-1));
+}
+
+.card--player:nth-child(2) {
+  top: -3rem;
+  left: -25rem;
+  transform: rotate(var(--rotation-card-2));
+}
+
+.card--player:nth-child(3) {
+  top: -4rem;
+  left: -10rem;
+  transform: rotate(var(--rotation-card-3));
+}
+
+.card--player:nth-child(4) {
+  top: -4rem;
+  left: 5rem;
+  transform: rotate(var(--rotation-card-4));
+}
+
+.card--player:nth-child(5) {
+  top: -2rem;
+  left: 20rem;
+  transform: rotate(var(--rotation-card-5));
+}
+
+.card--player:nth-child(1):hover img {
+  transform: scale(var(--scaleFactor)) translateY(var(--translateYCardOnHover))
+    rotate(calc(-1 * var(--rotation-card-1)));
+}
+
+.card--player:nth-child(2):hover img {
+  transform: scale(var(--scaleFactor)) translateY(var(--translateYCardOnHover))
+    rotate(calc(-1 * var(--rotation-card-2)));
+}
+
+.card--player:nth-child(3):hover img {
+  transform: scale(var(--scaleFactor)) translateY(var(--translateYCardOnHover))
+    rotate(calc(-1 * var(--rotation-card-3)));
+}
+
+.card--player:nth-child(4):hover img {
+  transform: scale(var(--scaleFactor)) translateY(var(--translateYCardOnHover));
+}
+
+.card--player:nth-child(5):hover img {
+  transform: scale(var(--scaleFactor)) translateY(-60%) rotate(calc(-1 * var(--rotation-card-5)));
+}
+
+/* ------------------------------------------- */
+/* COMPUTER'S CARDS */
+/* ------------------------------------------- */
+.card--computer:hover img {
+  transform: scale(var(--scaleFactor)) translateY(-50%);
+  cursor: pointer;
+}
+
+.card--computer {
+  position: absolute;
+  z-index: 1;
+}
+
+.card--computer:nth-child(1) {
+  top: 0rem;
+  left: -40rem;
+  transform: rotate(calc(-1 * var(--rotation-card-1)));
+}
+
+.card--computer:nth-child(2) {
+  top: 3rem;
+  left: -25rem;
+  transform: rotate(calc(-1 * var(--rotation-card-2)));
+}
+
+.card--computer:nth-child(3) {
+  top: 4rem;
+  left: -10rem;
+  transform: rotate(calc(-1 * var(--rotation-card-3)));
+}
+
+.card--computer:nth-child(4) {
+  top: 4rem;
+  left: 5rem;
+  transform: rotate(calc(-1 * var(--rotation-card-4)));
+}
+
+.card--computer:nth-child(5) {
+  top: 2rem;
+  left: 20rem;
+  transform: rotate(calc(-1 * var(--rotation-card-5)));
+}
+
+.card--computer:nth-child(1):hover img {
+  transform: scale(var(--scaleFactor)) translateY(calc(-1 * var(--translateYCardOnHover)))
+    rotate(var(--rotation-card-1));
+}
+
+.card--computer:nth-child(2):hover img {
+  transform: scale(var(--scaleFactor)) translateY(calc(-1 * var(--translateYCardOnHover)))
+    rotate(var(--rotation-card-2));
+}
+
+.card--computer:nth-child(3):hover img {
+  transform: scale(var(--scaleFactor)) translateY(calc(-1 * var(--translateYCardOnHover)))
+    rotate(var(--rotation-card-3));
+}
+
+.card--computer:nth-child(4):hover img {
+  transform: scale(var(--scaleFactor)) translateY(calc(-1 * var(--translateYCardOnHover)));
+}
+
+.card--computer:nth-child(5):hover img {
+  transform: scale(var(--scaleFactor)) translateY(calc(-1 * var(--translateYCardOnHover)))
+    rotate(var(--rotation-card-5));
+}
