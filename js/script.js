@@ -172,14 +172,6 @@ const setInfoAboutBattle = function (myPokemon) {
   playerPokemonInfo.textContent = myPokemon.name;
   computerPokemonInfo.textContent = computerPokemon.name;
 
-  // for (let el of emojis) {
-  //   if (el.type == myPokemon.type) {
-  //     playerPokemonInfo.textContent += el.emoji;
-  //   }
-  //   if (el.type == computerPokemon.type) {
-  //     computerPokemonInfo.textContent += el.emoji;
-  //   }
-  // }
   playerPokemonInfo.textContent += emojis.get(myPokemon.type);
   computerPokemonInfo.textContent += emojis.get(computerPokemon.type);
 };
