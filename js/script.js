@@ -72,6 +72,13 @@ const definePokemon = function () {
 
   shuffleArray(indexes);
   shuffleArray(pokemons);
+  setUrls();
+};
+
+const setUrls = function () {
+  for (let i = 0; i < playerCardsEls.length; i++) {
+    playerCardsEls[i].children[0].setAttribute('src', pokemons[i].src);
+  }
 };
 
 const defineTopsForAnimation = function (top, first, last) {
@@ -217,9 +224,9 @@ const fight = function (myPokemon) {
 };
 
 const playPokemon = function (card) {
-  const src = card.children[0].src;
-  const pokemonType = pokemonTypes[card.id];
-  const pokemonName = pokemonNames[card.id];
+  const src = pokemons[card.id].src;
+  const pokemonType = pokemons[card.id].type;
+  const pokemonName = pokemons[card.id].name;
 
   const myPokemon = new Pokemon(src, pokemonType, pokemonName);
 
