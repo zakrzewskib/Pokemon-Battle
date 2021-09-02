@@ -11,10 +11,24 @@ const imgUrls = '';
 
 const pokemonTypes = [];
 
+const setComputerTop = function (card) {
+  card.style.top = '130%';
+};
+
+const moveComputerCard = function (card) {
+  card.style.pointerEvents = 'none';
+  const left = '-32rem';
+  card.children[0].src = './img/cards/Pikachu.png';
+
+  card.style.transform = `rotate(0deg)`;
+
+  card.style.left = left;
+  setComputerTop(card);
+};
+
 const computerPlaysPokemon = function (src) {
-  const pokemonType = pokemonTypes[0];
-  setBattleCardImage(secondBattleCard, './img/cards/Pikachu.png');
-  removeCard(computerCardsEls[0]);
+  // setBattleCardImage(secondBattleCard, './img/cards/Pikachu.png');
+  moveComputerCard(computerCardsEls[0]);
 };
 
 const setBattleCardImage = function (card, src) {
@@ -62,7 +76,7 @@ const setTop = function (card) {
 const moveCard = function (card) {
   // const left = '-28rem';
   card.style.pointerEvents = 'none';
-  const left = '-100%';
+  const left = '0rem';
 
   card.style.transform = `rotate(0deg)`;
 
@@ -74,7 +88,7 @@ const playPokemon = function (card) {
   const imageSrc = card.children[0].src;
   const pokemonType = pokemonTypes[card.id];
 
-  setBattleCardImage(firstBattleCard, imageSrc);
+  // setBattleCardImage(firstBattleCard, imageSrc);
 
   computerPlaysPokemon(imageSrc);
 };
