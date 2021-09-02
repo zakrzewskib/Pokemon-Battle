@@ -4,10 +4,11 @@ const playerCardsEls = document.querySelectorAll('.card--player');
 const computerCardsEls = document.querySelectorAll('.card--computer');
 const firstBattleCard = document.querySelectorAll('.card--battle')[0];
 const secondBattleCard = document.querySelectorAll('.card--battle')[1];
+const playerPokemonInfo = document.querySelector('.player-pokemon');
+const computerPokemonInfo = document.querySelector('.computer-pokemon');
+
 const root = document.documentElement;
 const rootVariables = getComputedStyle(root);
-
-const pokemonTypes = [];
 
 const tops = [];
 const length = 100;
@@ -21,13 +22,16 @@ const lastTopComputer = 128.5;
 const imgUrls = [''];
 
 class Pokemon {
-  constructor(src, type) {
+  constructor(src, type, name) {
     this.src = src;
     this.type = type;
+    this.name = name;
   }
 }
 
 const indexes = [0, 1, 2, 3, 4];
+const pokemonNames = [];
+const pokemonTypes = [];
 const pokemons = [];
 
 const defineTypes = function () {
@@ -40,11 +44,20 @@ const defineTypes = function () {
 
 const defineImgUrls = function () {
   const prefix = './img/cards/';
-  imgUrls[0] = prefix + 'Pikachu.png';
-  imgUrls[1] = prefix + 'Bulbasaur.png';
-  imgUrls[2] = prefix + 'Charmander.png';
-  imgUrls[3] = prefix + 'Haunter.png';
-  imgUrls[4] = prefix + 'Jigglypuff.png';
+  pokemonNames[0] = 'Pikachu';
+  imgUrls[0] = prefix + pokemonNames[0] + '.png';
+
+  pokemonNames[1] = 'Bulbasaur';
+  imgUrls[1] = prefix + pokemonNames[1] + '.png';
+
+  pokemonNames[2] = 'Charmander';
+  imgUrls[2] = prefix + pokemonNames[2] + '.png';
+
+  pokemonNames[3] = 'Haunter';
+  imgUrls[3] = prefix + pokemonNames[3] + '.png';
+
+  pokemonNames[4] = 'Jigglypuff';
+  imgUrls[4] = prefix + pokemonNames[4] + '.png';
 };
 
 const definePokemon = function () {
@@ -52,13 +65,11 @@ const definePokemon = function () {
   defineImgUrls();
 
   for (let i = 0; i < pokemonTypes.length; i++) {
-    pokemons.push(new Pokemon(imgUrls[i], pokemonTypes[i]));
+    pokemons.push(new Pokemon(imgUrls[i], pokemonTypes[i], pokemonNames[i]));
   }
 
   shuffleArray(indexes);
   shuffleArray(pokemons);
-
-  console.log(pokemons);
 };
 
 const defineTopsForAnimation = function (top, first, last) {
@@ -72,8 +83,6 @@ const defineTopsForAnimation = function (top, first, last) {
 const setTop = function (card, player) {
   defineTopsForAnimation(tops, firstTop, lastTop);
   defineTopsForAnimation(topsComputer, firstTopComputer, lastTopComputer);
-
-  console.log(tops[length - 1], topsComputer[length - 1]);
 
   let i = 0;
   let time = 5;
@@ -92,10 +101,7 @@ let computerPokemon;
 let randomIndex;
 
 const randomizePokemon = function () {
-  // randomIndex = randomBetween(0, pokemons.length - 1);
   computerPokemon = pokemons[pokemons.length - 1];
-  console.log(pokemons);
-
   pokemons.pop();
 };
 
@@ -125,7 +131,6 @@ const computerPlaysPokemon = function (src) {
   randomizePokemon();
   moveCard(computerCardsEls[indexes[indexes.length - 1]], false);
   indexes.pop();
-  console.log(indexes);
 };
 
 const setBattleCardImage = function (card, src) {
@@ -137,15 +142,37 @@ const removeCard = function (card) {
   card.classList.add('hidden');
 };
 
+const setInfoAboutBattle = function (myPokemon) {
+  playerPokemonInfo.textContent = myPokemon.name;
+  computerPokemonInfo.textContent = computerPokemon.name;
+
+  for (let el of emojis) {
+    if (el.type == myPokemon.type) {
+      playerPokemonInfo.textContent += el.emoji;
+    }
+    if (el.type == computerPokemon.type) {
+      computerPokemonInfo.textContent += el.emoji;
+    }
+  }
+};
+
+const fight = function (myPokemon) {
+  setInfoAboutBattle(myPokemon);
+  console.log(pokemonNames);
+};
+
 const playPokemon = function (card) {
   const src = card.children[0].src;
   const pokemonType = pokemonTypes[card.id];
-  const myPokemon = new Pokemon(src, pokemonType);
+  const pokemonName = pokemonNames[card.id];
+
+  console.log(pokemonNames);
+  console.log(card.id);
+  const myPokemon = new Pokemon(src, pokemonType, pokemonName);
 
   moveCard(card, true);
   computerPlaysPokemon(src);
-
-  console.log(myPokemon.type + 'vs' + computerPokemon.type);
+  fight(myPokemon);
 };
 
 const addEventListenersToPlayerCards = function () {

@@ -8,3 +8,30 @@ const shuffleArray = array => {
     array[j] = temp;
   }
 };
+
+const emojis = [
+  {
+    type: 'Fire',
+    emoji: '🔥',
+  },
+  {
+    type: 'Electric',
+    emoji: '⚡',
+  },
+  {
+    type: 'Grass',
+    emoji: '🍃',
+  },
+  {
+    type: 'Water',
+    emoji: '💦',
+  },
+  {
+    type: 'Fairy',
+    emoji: '🌟',
+  },
+  {
+    type: 'Psychic',
+    emoji: '👁‍🗨',
+  },
+];
