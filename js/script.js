@@ -146,7 +146,7 @@ const removeCard = function (card) {
 
 const setInfoAboutWinner = function (type1, type2, youWin) {
   winner.textContent = youWin ? 'You win!' : 'You lose!';
-  result.textContent = `${type2} ${youWin ? 'loses to' : 'beats'} ${type1}`;
+  result.textContent = `${type2}${emojis.get(type2)} ${youWin ? 'loses to' : 'beats'} ${type1}${emojis.get(type1)}`;
 };
 
 const setWinner = function (type1, type2) {
@@ -172,14 +172,16 @@ const setInfoAboutBattle = function (myPokemon) {
   playerPokemonInfo.textContent = myPokemon.name;
   computerPokemonInfo.textContent = computerPokemon.name;
 
-  for (let el of emojis) {
-    if (el.type == myPokemon.type) {
-      playerPokemonInfo.textContent += el.emoji;
-    }
-    if (el.type == computerPokemon.type) {
-      computerPokemonInfo.textContent += el.emoji;
-    }
-  }
+  // for (let el of emojis) {
+  //   if (el.type == myPokemon.type) {
+  //     playerPokemonInfo.textContent += el.emoji;
+  //   }
+  //   if (el.type == computerPokemon.type) {
+  //     computerPokemonInfo.textContent += el.emoji;
+  //   }
+  // }
+  playerPokemonInfo.textContent += emojis.get(myPokemon.type);
+  computerPokemonInfo.textContent += emojis.get(computerPokemon.type);
 };
 
 const fight = function (myPokemon) {

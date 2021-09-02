@@ -9,29 +9,37 @@ const shuffleArray = array => {
   }
 };
 
-const emojis = [
-  {
-    type: 'Fire',
-    emoji: '🔥',
-  },
-  {
-    type: 'Electric',
-    emoji: '⚡',
-  },
-  {
-    type: 'Grass',
-    emoji: '🍃',
-  },
-  {
-    type: 'Water',
-    emoji: '💦',
-  },
-  {
-    type: 'Fairy',
-    emoji: '🌟',
-  },
-  {
-    type: 'Psychic',
-    emoji: '👁‍🗨',
-  },
-];
+// const emojis = [
+//   {
+//     type: 'Fire',
+//     emoji: '🔥',
+//   },
+//   {
+//     type: 'Electric',
+//     emoji: '⚡',
+//   },
+//   {
+//     type: 'Grass',
+//     emoji: '🍃',
+//   },
+//   {
+//     type: 'Water',
+//     emoji: '💦',
+//   },
+//   {
+//     type: 'Fairy',
+//     emoji: '🌟',
+//   },
+//   {
+//     type: 'Psychic',
+//     emoji: '👁‍🗨',
+//   },
+// ];
+
+const emojis = new Map();
+emojis.set('Fire', '🔥');
+emojis.set('Grass', '🍃');
+emojis.set('Water', '💦');
+emojis.set('Fairy', '🌟');
+emojis.set('Psychic', '👁‍🗨');
+emojis.set('Electric', '⚡');
