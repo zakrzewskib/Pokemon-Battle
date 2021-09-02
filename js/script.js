@@ -145,27 +145,55 @@ const removeCard = function (card) {
 };
 
 const setInfoAboutWinner = function (type1, type2, youWin) {
-  winner.textContent = youWin ? 'You win!' : 'You lose!';
-  result.textContent = `${type2}${emojis.get(type2)} ${youWin ? 'loses to' : 'beats'} ${type1}${emojis.get(type1)}`;
+  if (youWin[1] === 'draw') {
+    winner.textContent = "It's a draw!";
+    result.textContent = `${type2}${emojis.get(type2)} vs ${type1}${emojis.get(type1)}`;
+  } else {
+    winner.textContent = youWin ? 'You win!' : 'You lose!';
+    result.textContent = `${type2}${emojis.get(type2)} ${youWin ? 'loses to' : 'beats'} ${type1}${emojis.get(type1)}`;
+  }
 };
 
 const setWinner = function (type1, type2) {
-  // if (type1 == 'Water' && type2 == 'Fire') {
-  //   console.log('Water wins!');
-  //   return true;
-  // } else if (type1 === 'Fire' && type2 === 'Water') {
-  //   console.log('Fire loses!');
-  //   return false;
-  // }
-
-  if (type1 == 'Water') {
-    console.log('Water wins!');
-    return true;
-  } else if (type1 === 'Fire') {
-    console.log('Fire loses!');
-    return false;
+  if (type1 === type2) {
+    return [false, 'draw'];
   }
-  return false;
+
+  // WINNING
+  else if (type1 === 'Fire' && (type2 === 'Bug' || type2 === 'Steel' || type2 === 'Grass' || type2 === 'Ice')) {
+    return [true, ''];
+  } else if (type1 === 'Water' && (type2 === 'Ground' || type2 === 'Rock' || type2 === 'Fire')) {
+    return [true, ''];
+  } else if (type1 === 'Grass' && (type2 === 'Ground' || type2 === 'Rock' || type2 === 'Water')) {
+    return [true, ''];
+  } else if (type1 === 'Electric' && (type2 === 'Flying' || type2 === 'Water')) {
+    return [true, ''];
+  } else if (type1 === 'Psychic' && (type2 === 'Fighting' || type2 === 'Poison')) {
+    return [true, ''];
+  } else if (type1 === 'Fairy' && (type2 === 'Fighting' || type2 === 'Dragon' || type2 === 'Dark')) {
+    return [true, ''];
+  }
+
+  // LOSING
+  else if (type1 === 'Fire' && (type2 === 'Rock' || type2 === 'Water' || type2 === 'Dragon')) {
+    return [false, ''];
+  } else if (type1 === 'Water' && (type2 === 'Grass' || type2 === 'Dragon')) {
+    return [false, ''];
+  } else if (
+    type1 === 'Grass' &&
+    (type2 === 'Flying' || type2 === 'Poison' || type2 === 'Bug' || type2 === 'Steel' || type2 === 'Fire')
+  ) {
+    return [false, ''];
+  } else if (type1 === 'Electric' && (type2 === 'Ground' || type2 === 'Grass' || type2 === 'Grass')) {
+    return [false, ''];
+  } else if (type1 === 'Psychic' && (type2 === 'Steel' || type2 === 'Dark')) {
+    return [false, ''];
+  } else if (type1 === 'Fairy' && (type2 === 'Poison' || type2 === 'Steel' || type2 === 'Fire')) {
+    return [false, ''];
+  }
+
+  // NO DATA
+  return [false, 'draw'];
 };
 
 const setInfoAboutBattle = function (myPokemon) {
@@ -176,10 +204,16 @@ const setInfoAboutBattle = function (myPokemon) {
   computerPokemonInfo.textContent += emojis.get(computerPokemon.type);
 };
 
-const fight = function (myPokemon) {
+const setInfo = function (myPokemon, type1, type2, youWin) {
   setInfoAboutBattle(myPokemon);
+  setInfoAboutWinner(type1, type2, youWin);
+};
+
+const fight = function (myPokemon) {
+  // setInfoAboutBattle(myPokemon);
   const youWin = setWinner(myPokemon.type, computerPokemon.type);
-  setInfoAboutWinner(myPokemon.type, computerPokemon.type, youWin);
+  // setInfoAboutWinner(myPokemon.type, computerPokemon.type, youWin);
+  setTimeout(setInfo, 500, myPokemon, myPokemon.type, computerPokemon.type, youWin);
 };
 
 const playPokemon = function (card) {
