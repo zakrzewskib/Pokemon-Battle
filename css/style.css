@@ -33,13 +33,33 @@ body {
 }
 
 .score--computer {
-  top: 2%;
-  left: 2%;
+  top: 5%;
+  left: 1%;
 }
 
 .score--player {
   bottom: 20%;
-  left: 2%;
+  left: 1%;
+}
+
+.vs {
+  font-size: 2.8rem;
+  color: #c52018;
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+.player-pokemon {
+  color: #08398b;
 }
 
 .computer-cards,
