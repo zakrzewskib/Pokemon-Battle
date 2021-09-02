@@ -42,7 +42,10 @@ const defineTypes = function () {
   pokemonTypes[2] = 'Fire';
   pokemonTypes[3] = 'Psychic';
   pokemonTypes[4] = 'Fairy';
+  pokemonTypes[5] = 'Water';
 };
+
+const handLength = 5;
 
 const defineImgUrls = function () {
   const prefix = './img/cards/';
@@ -60,6 +63,9 @@ const defineImgUrls = function () {
 
   pokemonNames[4] = 'Jigglypuff';
   imgUrls[4] = prefix + pokemonNames[4] + '.png';
+
+  pokemonNames[5] = 'Magikarp';
+  imgUrls[5] = prefix + pokemonNames[5] + '.png';
 };
 
 const definePokemon = function () {
@@ -72,9 +78,13 @@ const definePokemon = function () {
 
   shuffleArray(indexes);
   shuffleArray(pokemons);
+
+  pokemonsForComputer = [...pokemons];
+  shuffleArray(pokemonsForComputer);
+
   setUrls();
 };
-
+1;
 const setUrls = function () {
   for (let i = 0; i < playerCardsEls.length; i++) {
     playerCardsEls[i].children[0].setAttribute('src', pokemons[i].src);
@@ -108,10 +118,11 @@ const setTop = function (card, player) {
 
 let computerPokemon;
 let randomIndex;
+let pokemonsForComputer;
 
 const randomizePokemon = function () {
-  computerPokemon = pokemons[pokemons.length - 1];
-  pokemons.pop();
+  computerPokemon = pokemonsForComputer[pokemonsForComputer.length - 1];
+  pokemonsForComputer.pop();
 };
 
 let zIndex = 0;
@@ -145,10 +156,6 @@ const computerPlaysPokemon = function (src) {
 const setBattleCardImage = function (card, src) {
   card.children[0].src = src;
   card.classList.remove('hidden');
-};
-
-const removeCard = function (card) {
-  card.classList.add('hidden');
 };
 
 const setInfoAboutWinner = function (type1, type2, youWin) {
@@ -224,11 +231,13 @@ const fight = function (myPokemon) {
 };
 
 const playPokemon = function (card) {
+  console.log(card);
   const src = pokemons[card.id].src;
   const pokemonType = pokemons[card.id].type;
   const pokemonName = pokemons[card.id].name;
 
   const myPokemon = new Pokemon(src, pokemonType, pokemonName);
+  console.log(myPokemon);
 
   moveCard(card, true);
   computerPlaysPokemon(src);
