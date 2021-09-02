@@ -45,9 +45,11 @@ body {
 .computer-cards,
 .player-cards,
 .battle-cards {
+  /* https://stackoverflow.com/questions/5928059/absolute-positioning-inside-absolute-position */
   position: absolute;
   display: flex;
-  height: 28rem;
+  height: 32%;
+  /* height: 28rem */
 }
 
 .computer-cards {
