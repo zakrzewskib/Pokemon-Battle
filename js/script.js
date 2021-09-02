@@ -7,8 +7,6 @@ const secondBattleCard = document.querySelectorAll('.card--battle')[1];
 const root = document.documentElement;
 const rootVariables = getComputedStyle(root);
 
-const randomBetween = (a, b) => Math.trunc(Math.random() * b) + a;
-
 const pokemonTypes = [];
 
 const tops = [];
