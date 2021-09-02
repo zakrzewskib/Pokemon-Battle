@@ -26,16 +26,48 @@ const removeCard = function (card) {
   card.classList.add('hidden');
 };
 
+const tops = [];
+const length = 100;
+const firstTop = 0;
+const secondTop = -130;
+
+const defineTopsForAnimation = function () {
+  const step = (firstTop - secondTop) / (length - 1);
+
+  for (let i = 0; i < length; i++) {
+    tops.push(`${firstTop - step * i}%`);
+  }
+};
+
+const setTop = function (card) {
+  defineTopsForAnimation();
+
+  console.log(tops[0]);
+  console.log(tops[length - 1]);
+
+  let i = 0;
+  let time = 5;
+
+  let interval = setInterval(function () {
+    // console.log(card.style.top);
+    card.style.top = tops[i];
+    i++;
+  }, time);
+
+  setTimeout(function () {
+    clearInterval(interval);
+  }, length * time);
+};
+
 const moveCard = function (card) {
-  console.log(card.style);
-  // top: 50%;
-  // transform: translateY(-50%);
-
-  const top = '-57rem';
-
-  card.style.top = top;
+  // const left = '-28rem';
+  card.style.pointerEvents = 'none';
+  const left = '-100%';
 
   card.style.transform = `rotate(0deg)`;
+
+  card.style.left = left;
+  setTop(card);
 };
 
 const playPokemon = function (card) {
