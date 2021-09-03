@@ -23,7 +23,9 @@ const setWinner = function (type1, type2) {
   }
 
   // WINNING
-  else if (type1 === 'Fire' && (type2 === 'Bug' || type2 === 'Steel' || type2 === 'Grass' || type2 === 'Ice')) {
+  else if (type1 === 'Fighting' && (type2 === 'Rock' || type2 === 'Steel' || type2 === 'Ice' || type2 === 'Dark')) {
+    return [true, ''];
+  } else if (type1 === 'Fire' && (type2 === 'Bug' || type2 === 'Steel' || type2 === 'Grass' || type2 === 'Ice')) {
     return [true, ''];
   } else if (type1 === 'Water' && (type2 === 'Ground' || type2 === 'Rock' || type2 === 'Fire')) {
     return [true, ''];
@@ -38,7 +40,12 @@ const setWinner = function (type1, type2) {
   }
 
   // LOSING
-  else if (type1 === 'Fire' && (type2 === 'Rock' || type2 === 'Water' || type2 === 'Dragon')) {
+  else if (
+    type1 === 'Fighting' &&
+    (type2 === 'Flying' || type2 === 'Poison' || type2 === 'Bug' || type2 === 'Psychic')
+  ) {
+    return [false, ''];
+  } else if (type1 === 'Fire' && (type2 === 'Rock' || type2 === 'Water' || type2 === 'Dragon')) {
     return [false, ''];
   } else if (type1 === 'Water' && (type2 === 'Grass' || type2 === 'Dragon')) {
     return [false, ''];

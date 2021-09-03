@@ -42,9 +42,22 @@ body {
   left: 1%;
 }
 
+.game-over {
+  font-size: 4rem;
+  color: #c52018;
+
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 9999;
+}
+
 .vs {
   font-size: 2.8rem;
   color: #c52018;
+
   position: absolute;
 
   top: 50%;
@@ -58,9 +71,9 @@ body {
   align-items: center;
 }
 
-.player-pokemon {
+/* .player-pokemon {
   color: #08398b;
-}
+} */
 
 .computer-cards,
 .player-cards,

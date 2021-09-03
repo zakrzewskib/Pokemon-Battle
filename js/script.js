@@ -12,6 +12,8 @@ const computerPokemonInfo = document.querySelector('.computer-pokemon');
 const winner = document.querySelector('.winner');
 const result = document.querySelector('.result');
 
+const gameResult = document.querySelector('.game-over');
+
 const score0 = document.querySelector('#score--0');
 const score1 = document.querySelector('#score--1');
 
@@ -41,6 +43,8 @@ let randomIndex;
 let pokemonsForComputer;
 
 let zIndexForNextPlayedCards = 0;
+
+let cardsPlayed = 0;
 
 class Pokemon {
   constructor(src, type, name) {
@@ -205,6 +209,18 @@ const fight = function (myPokemon) {
   increaseScore(youWin);
 };
 
+const checkIfGameEnded = function () {
+  if (cardsPlayed === handLength) {
+    if (scores[1] > scores[0]) {
+      gameResult.textContent = 'You won!🏆';
+    } else if (scores[0] > scores[1]) {
+      gameResult.textContent = 'You lost!😢';
+    } else {
+      gameResult.textContent = "It's a draw!🤝";
+    }
+  }
+};
+
 const playPokemon = function (card) {
   const src = pokemons[card.id].src;
   const pokemonType = pokemons[card.id].type;
@@ -215,6 +231,9 @@ const playPokemon = function (card) {
   moveCard(card, true); // true - move player's card
   computerPlaysPokemon(src);
   fight(myPokemon);
+
+  cardsPlayed++;
+  setTimeout(checkIfGameEnded, 5000);
 };
 
 const addEventListenersToPlayerCards = function () {
