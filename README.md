@@ -13,7 +13,7 @@
 
 ### Preview
 
-* Play the game on my  <a href="">Codepen</a>
+* Play the game on my  <a href="https://codepen.io/zakrzewskib/pen/wveWQVy">Codepen</a>
 
 * Gif made with <a href="https://www.cockos.com/licecap/" target="_blank">LICEcap</a>:
 
