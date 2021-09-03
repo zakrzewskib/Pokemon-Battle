@@ -114,7 +114,7 @@ const defineImgUrlsAndNames = function () {
   imgUrls[12] = prefix + pokemonNames[12] + '.png';
 
   pokemonNames[13] = 'Vulpix';
-  imgUrls[13] = prefix + pokemonNames[12] + '.png';
+  imgUrls[13] = prefix + pokemonNames[13] + '.png';
 };
 
 const setUrlsForPlayerCards = function () {
@@ -242,15 +242,20 @@ const fight = function (myPokemon) {
 };
 
 const checkIfGameEnded = function () {
-  if (cardsPlayed === handLength) {
-    if (scores[1] > scores[0]) {
-      gameResult.textContent = 'You won!🏆';
-    } else if (scores[0] > scores[1]) {
-      gameResult.textContent = 'You lost!😢';
-    } else {
-      gameResult.textContent = "It's a draw!🤝";
+  setTimeout(function () {
+    if (cardsPlayed === handLength) {
+      if (scores[1] > scores[0]) {
+        gameResult.textContent = 'You won!🏆';
+        document.body.style.backgroundColor = '#dbfdc0';
+      } else if (scores[0] > scores[1]) {
+        gameResult.textContent = 'You lost!😢';
+        document.body.style.backgroundColor = '#faa2a2';
+      } else {
+        gameResult.textContent = "It's a draw!🤝";
+        document.body.style.backgroundColor = '#c2c2c2';
+      }
     }
-  }
+  }, 2000);
 };
 
 const playPokemon = function (card) {
@@ -265,7 +270,7 @@ const playPokemon = function (card) {
   fight(myPokemon);
 
   cardsPlayed++;
-  setTimeout(checkIfGameEnded, 5000);
+  checkIfGameEnded();
 };
 
 const addEventListenersToPlayerCards = function () {
