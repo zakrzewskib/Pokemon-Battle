@@ -16,6 +16,7 @@ emojis.set('Water', '💦');
 emojis.set('Fairy', '🌟');
 emojis.set('Psychic', '👁‍🗨');
 emojis.set('Electric', '⚡');
+emojis.set('Fighting', '🥊');
 
 const setWinner = function (type1, type2) {
   if (type1 === type2) {

@@ -61,6 +61,14 @@ const defineTypes = function () {
   pokemonTypes[3] = 'Psychic';
   pokemonTypes[4] = 'Fairy';
   pokemonTypes[5] = 'Water';
+  pokemonTypes[6] = 'Fighting';
+  pokemonTypes[7] = 'Water';
+  pokemonTypes[8] = 'Grass';
+  pokemonTypes[9] = 'Psychic';
+  pokemonTypes[10] = 'Fairy';
+  pokemonTypes[11] = 'Fighting';
+  pokemonTypes[12] = 'Electric';
+  pokemonTypes[13] = 'Fire';
 };
 
 const defineImgUrlsAndNames = function () {
@@ -83,6 +91,30 @@ const defineImgUrlsAndNames = function () {
 
   pokemonNames[5] = 'Magikarp';
   imgUrls[5] = prefix + pokemonNames[5] + '.png';
+
+  pokemonNames[6] = 'Machop';
+  imgUrls[6] = prefix + pokemonNames[6] + '.png';
+
+  pokemonNames[7] = 'Goldeen';
+  imgUrls[7] = prefix + pokemonNames[7] + '.png';
+
+  pokemonNames[8] = 'Exeggcute';
+  imgUrls[8] = prefix + pokemonNames[8] + '.png';
+
+  pokemonNames[9] = 'Drowzee';
+  imgUrls[9] = prefix + pokemonNames[9] + '.png';
+
+  pokemonNames[10] = 'Meowth';
+  imgUrls[10] = prefix + pokemonNames[10] + '.png';
+
+  pokemonNames[11] = 'Rhyhorn';
+  imgUrls[11] = prefix + pokemonNames[11] + '.png';
+
+  pokemonNames[12] = 'Voltorb';
+  imgUrls[12] = prefix + pokemonNames[12] + '.png';
+
+  pokemonNames[13] = 'Vulpix';
+  imgUrls[13] = prefix + pokemonNames[12] + '.png';
 };
 
 const setUrlsForPlayerCards = function () {
