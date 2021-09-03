@@ -167,9 +167,12 @@ const setInfoAboutWinner = function (type1, type2, youWin) {
   if (youWin[1] === 'draw') {
     winner.textContent = "It's a draw!";
     result.textContent = `${type2}${emojis.get(type2)} vs ${type1}${emojis.get(type1)}`;
+  } else if (youWin[0]) {
+    winner.textContent = 'You win!';
+    result.textContent = `${type2}${emojis.get(type2)} loses to ${type1}${emojis.get(type1)}`;
   } else {
-    winner.textContent = youWin ? 'You win!' : 'You lose!';
-    result.textContent = `${type2}${emojis.get(type2)} ${youWin ? 'loses to' : 'beats'} ${type1}${emojis.get(type1)}`;
+    winner.textContent = 'You lose!';
+    result.textContent = `${type2}${emojis.get(type2)} beats ${type1}${emojis.get(type1)}`;
   }
 };
 
