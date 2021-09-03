@@ -3,7 +3,7 @@
 
 ### About
 * This project was started to practice JavaScript after learning about DOM manipulation.
-* I ended up also doing some CSS to rotate and 'animate' cards in player's hand (like in Hearthstone) (Values 'are hard coded' so on different resolutions game can look different 😳).
+* I ended up also doing some CSS to rotate and 'animate' cards in player's hand (like in Hearthstone) (Values 'are hard coded' so on different resolutions game can look different).
 
 <a href="https://html5gamedevelopment.com/hearthstone-card-effect-in-css/" target="_blank"> <img src="https://html5gamedevelopment.com/wp-content/uploads/2017/10/Hearthstone-card-effect-in-CSS-tweet-screenshot.png" width="250px"> </a>
 
