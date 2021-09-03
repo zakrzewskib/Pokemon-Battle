@@ -1,5 +1,8 @@
 'use strict';
 
+const root = document.documentElement;
+const rootVariables = getComputedStyle(root);
+
 const playerCardsEls = document.querySelectorAll('.card--player');
 const computerCardsEls = document.querySelectorAll('.card--computer');
 const firstBattleCard = document.querySelectorAll('.card--battle')[0];
@@ -12,21 +15,32 @@ const result = document.querySelector('.result');
 const score0 = document.querySelector('#score--0');
 const score1 = document.querySelector('#score--1');
 
-const root = document.documentElement;
-const rootVariables = getComputedStyle(root);
-
 const scores = [0, 0];
 
 const tops = [];
+const topsComputer = [];
+
 const length = 100;
+
 const firstTop = 0;
 const lastTop = -128;
 
-const topsComputer = [];
 const firstTopComputer = 0;
 const lastTopComputer = 128.5;
 
+const handLength = 5;
+const indexesOfComputerCards = [0, 1, 2, 3, 4];
 const imgUrls = [''];
+const pokemonNames = [];
+const pokemonTypes = [];
+
+const pokemons = [];
+
+let computerPokemon;
+let randomIndex;
+let pokemonsForComputer;
+
+let zIndexForNextPlayedCards = 0;
 
 class Pokemon {
   constructor(src, type, name) {
@@ -35,11 +49,6 @@ class Pokemon {
     this.name = name;
   }
 }
-
-const indexes = [0, 1, 2, 3, 4];
-const pokemonNames = [];
-const pokemonTypes = [];
-const pokemons = [];
 
 const defineTypes = function () {
   pokemonTypes[0] = 'Electric';
@@ -50,10 +59,9 @@ const defineTypes = function () {
   pokemonTypes[5] = 'Water';
 };
 
-const handLength = 5;
-
-const defineImgUrls = function () {
+const defineImgUrlsAndNames = function () {
   const prefix = './img/cards/';
+
   pokemonNames[0] = 'Pikachu';
   imgUrls[0] = prefix + pokemonNames[0] + '.png';
 
@@ -73,27 +81,34 @@ const defineImgUrls = function () {
   imgUrls[5] = prefix + pokemonNames[5] + '.png';
 };
 
-const definePokemon = function () {
+const setUrlsForPlayerCards = function () {
+  for (let i = 0; i < playerCardsEls.length; i++) {
+    playerCardsEls[i].children[0].setAttribute('src', pokemons[i].src);
+  }
+};
+
+const definePokemons = function () {
   defineTypes();
-  defineImgUrls();
+  defineImgUrlsAndNames();
 
   for (let i = 0; i < pokemonTypes.length; i++) {
     pokemons.push(new Pokemon(imgUrls[i], pokemonTypes[i], pokemonNames[i]));
   }
 
-  shuffleArray(indexes);
+  shuffleArray(indexesOfComputerCards);
+
   shuffleArray(pokemons);
 
   pokemonsForComputer = [...pokemons];
+
   shuffleArray(pokemonsForComputer);
 
-  setUrls();
+  setUrlsForPlayerCards();
 };
-1;
-const setUrls = function () {
-  for (let i = 0; i < playerCardsEls.length; i++) {
-    playerCardsEls[i].children[0].setAttribute('src', pokemons[i].src);
-  }
+
+const randomizePokemonForComputer = function () {
+  computerPokemon = pokemonsForComputer[pokemonsForComputer.length - 1];
+  pokemonsForComputer.pop();
 };
 
 const defineTopsForAnimation = function (top, first, last) {
@@ -121,17 +136,6 @@ const setTop = function (card, player) {
   }, length * time);
 };
 
-let computerPokemon;
-let randomIndex;
-let pokemonsForComputer;
-
-const randomizePokemon = function () {
-  computerPokemon = pokemonsForComputer[pokemonsForComputer.length - 1];
-  pokemonsForComputer.pop();
-};
-
-let zIndex = 0;
-
 const moveCard = function (card, player) {
   const left = player ? '0' : '-32rem';
   card.style.left = left;
@@ -142,25 +146,16 @@ const moveCard = function (card, player) {
 
   card.style.pointerEvents = 'none';
   card.style.transform = `rotate(0deg)`;
-  card.style.zIndex = zIndex;
-  zIndex++;
+  card.style.zIndex = zIndexForNextPlayedCards;
+  zIndexForNextPlayedCards++;
 
   setTop(card, player);
-
-  // setTimeout(function () {
-  //   card.classList.add('hidden');
-  // }, 1000);
 };
 
 const computerPlaysPokemon = function (src) {
-  randomizePokemon();
-  moveCard(computerCardsEls[indexes[indexes.length - 1]], false);
-  indexes.pop();
-};
-
-const setBattleCardImage = function (card, src) {
-  card.children[0].src = src;
-  card.classList.remove('hidden');
+  randomizePokemonForComputer();
+  moveCard(computerCardsEls[indexesOfComputerCards[indexesOfComputerCards.length - 1]], false);
+  indexesOfComputerCards.pop();
 };
 
 const setInfoAboutWinner = function (type1, type2, youWin) {
@@ -189,12 +184,7 @@ const setInfo = function (myPokemon, type1, type2, youWin) {
   setInfoAboutWinner(type1, type2, youWin);
 };
 
-const fight = function (myPokemon) {
-  // setInfoAboutBattle(myPokemon);
-  const youWin = setWinner(myPokemon.type, computerPokemon.type);
-  // setInfoAboutWinner(myPokemon.type, computerPokemon.type, youWin);
-  setTimeout(setInfo, 500, myPokemon, myPokemon.type, computerPokemon.type, youWin);
-
+const increaseScore = function (youWin) {
   if (youWin[1] !== 'draw') {
     if (youWin[0]) {
       scores[1]++;
@@ -207,16 +197,22 @@ const fight = function (myPokemon) {
   score1.textContent = scores[1];
 };
 
+const fight = function (myPokemon) {
+  const youWin = setWinner(myPokemon.type, computerPokemon.type);
+
+  setTimeout(setInfo, 500, myPokemon, myPokemon.type, computerPokemon.type, youWin);
+
+  increaseScore(youWin);
+};
+
 const playPokemon = function (card) {
-  console.log(card);
   const src = pokemons[card.id].src;
   const pokemonType = pokemons[card.id].type;
   const pokemonName = pokemons[card.id].name;
 
   const myPokemon = new Pokemon(src, pokemonType, pokemonName);
-  console.log(myPokemon);
 
-  moveCard(card, true);
+  moveCard(card, true); // true - move player's card
   computerPlaysPokemon(src);
   fight(myPokemon);
 };
@@ -229,5 +225,5 @@ const addEventListenersToPlayerCards = function () {
   });
 };
 
-definePokemon();
+definePokemons();
 addEventListenersToPlayerCards();
