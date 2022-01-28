@@ -1,4 +1,4 @@
-# Pokemon Battle⚡🥊
+<!-- # Pokemon Battle⚡🥊
 <img src="https://media.giphy.com/media/AFdcYElkoNAUE/giphy.gif?cid=790b761170a24477f134b20ed2311d12338d8374490d77cf&rid=giphy.gif" width="125px">
 
 ### About
@@ -16,6 +16,6 @@
 * Play the game on my  <a href="https://codepen.io/zakrzewskib/pen/wveWQVy">Codepen</a>
 
 * Gif made with <a href="https://www.cockos.com/licecap/" target="_blank">LICEcap</a>:
-
+ -->
 <img src="https://github.com/zakrzewskib/Pokemon-Battle/blob/master/screenshots/preview.gif">
 
